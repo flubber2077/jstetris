@@ -1,38 +1,87 @@
-.App {
-  text-align: center;
+ /* styles.css */
+/* .grid {
+  display: grid;
+  grid-template-columns: 320px 200px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.right-column {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.game-board {
+  border: solid 2px;
+}
+ 
+.play-button {
+  background-color: #4caf50;
+  font-size: 16px;
+  padding: 15px 30px;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+* {
+  font-family: 'Press Start 2P', cursive;
+} */
+
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 0px;
+}
+
+.t-row {
+  display: flex;
+}
+
+.t-board {
+  display: inline-block;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid grey;
+}
+
+.t-cell {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  box-sizing: border-box;
+  color: grey;
+}
+
+.t-cell-0 {
+  background-color: black;
+}
+
+.t-cell-1 {
+  background-color: #00d;
+  border-bottom: 1px solid #00f;
+  border-right: 1px solid #00f;
+  border-top: 1px solid #00b;
+  border-left: 1px solid #00b;
+}
+
+.t-cell-2 {
+  background-color: green;
+}
+
+.t-cell-3 {
+  background-color: red;
+}
+
+.t-score-label {
+  font-weight: bold;
+}
+
+.t-score-label {
+  font-weight: bold;
+}
+
+.t-parent {
+  display: flex;
+}
+
+element.style {
+  width: 44px;
+  left: 0px;
 }

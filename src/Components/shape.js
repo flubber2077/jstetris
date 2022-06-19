@@ -67,8 +67,29 @@ const SHAPES = [
         ],
         width: 2,
         height: 3
+    },
+    // Z shape
+    {
+        shape: [
+            {x:0, y:0},
+            {x:0, y:1},
+            {x:1, y:1},
+            {x:1, y:2}
+        ],
+        width: 2,
+        height: 3
+    },
+    // S shape
+    {
+        shape: [
+            {x:1, y:0},
+            {x:1, y:1},
+            {x:0, y:1},
+            {x:0, y:2}
+        ],
+        width: 2,
+        height: 3
     }
-    // L
 ];
 
 export function randomShape() {

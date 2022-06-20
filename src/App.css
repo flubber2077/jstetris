@@ -50,11 +50,15 @@ body {
 }
 
 .tetris-cell-1 {
-  background-color: #00d;
-  border-bottom: 4px solid #00b;
-  border-right: 4px solid #00b;
-  border-top: 4px solid #00f;
-  border-left: 4px solid #00f;
+  --blue: #00e;
+  --darkblue: #00b;
+  --lightblue: #11f;
+  --borderwidth: 6px;
+  background-color: var(--blue);
+  border-bottom: var(--borderwidth) solid var(--darkblue);
+  border-right: var(--borderwidth) solid var(--darkblue);
+  border-top: var(--borderwidth) solid var(--lightblue);
+  border-left: var(--borderwidth) solid var(--lightblue);
 }
 
 .tetris-cell-2 {

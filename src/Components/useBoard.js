@@ -1,22 +1,22 @@
-import {useEffect, useState} from 'react';
-import {useInterval} from "./useInterval";
-import {randomShape} from "./shape";
+import { useEffect, useState } from 'react';
+import { useInterval } from "./useInterval";
+import { randomShape } from "./shape";
 
 export const ROW_COUNT = 20;
 export const COLUMN_COUNT = 10;
 
 function copyScene(scene) {
-    return scene.map(row=>row.slice());
+    return scene.map(row => row.slice());
 }
 
 function mergeIntoStage(stage, shape, position) {
     let res = stage;
 
-    shape.shape.forEach( point => {
+    shape.shape.forEach(point => {
         const x = point.x + position.x;
         const y = point.y + position.y;
 
-        if (x<0 || y<0 || x>=COLUMN_COUNT || y>=ROW_COUNT) { return; }
+        if (x < 0 || y < 0 || x >= COLUMN_COUNT || y >= ROW_COUNT) { return; }
 
         res = updateStage(res, x, y, 1);
     });
@@ -25,7 +25,7 @@ function mergeIntoStage(stage, shape, position) {
 }
 
 function updateStage(stage, x, y, value) {
-    if (stage[y][x]===value) { return stage; }
+    if (stage[y][x] === value) { return stage; }
     const res = stage.slice();
     res[y] = stage[y].slice();
     res[y][x] = value;
@@ -33,20 +33,20 @@ function updateStage(stage, x, y, value) {
 }
 
 function createEmptyScene() {
-    return Array.from(Array(ROW_COUNT), ()=> Array(COLUMN_COUNT).fill(0) );
+    return Array.from(Array(ROW_COUNT), () => Array(COLUMN_COUNT).fill(0));
 }
 
 export function useBoard() {
 
-    const [scene, setScene] = useState(()=> createEmptyScene() );
-    const [shape, setShape] = useState(()=> randomShape() );
-    const [position, setPosition] = useState({x: 0, y: 0});
-    const [display, setDisplay] = useState( ()=> mergeIntoStage(scene, shape, position) );
-    const [score, setScore] = useState( 0);
+    const [scene, setScene] = useState(() => createEmptyScene());
+    const [shape, setShape] = useState(() => randomShape());
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [display, setDisplay] = useState(() => mergeIntoStage(scene, shape, position));
+    const [score, setScore] = useState(0);
 
     useEffect(updateDisplay, [scene, shape, position]);
     useEffect(removeFullLines, [scene]);
-    useInterval(tick, 600);
+    useInterval(tick, 500);
 
     function updateDisplay() {
         const newDisplay = mergeIntoStage(scene, shape, position);
@@ -62,7 +62,7 @@ export function useBoard() {
     function placeShape() {
         setScene(mergeIntoStage(scene, shape, position));
         setShape(randomShape());
-        setPosition({x: 0, y: 0});
+        setPosition({ x: 0, y: 0 });
     }
 
     function rotateShape() {
@@ -70,8 +70,8 @@ export function useBoard() {
         const tX = Math.floor(shape.width / 2);
         const tY = Math.floor(shape.height / 2);
 
-        const newPoints = shape.shape.map( point => {
-            let {x,y} = point;
+        const newPoints = shape.shape.map(point => {
+            let { x, y } = point;
 
             x -= tX;
             y -= tY;
@@ -85,7 +85,7 @@ export function useBoard() {
             rX += tX;
             rY += tY;
 
-            return {x: rX, y: rY};
+            return { x: rX, y: rY };
         });
         const newShape = {
             shape: newPoints,
@@ -98,15 +98,35 @@ export function useBoard() {
         }
     }
 
+    function scoringSystem(rowsRemoved) {
+        let newPoints = 0;
+        switch (rowsRemoved) {
+            case 1:
+                newPoints = 40;
+                break;
+            case 2:
+                newPoints = 100;
+                break;
+            case 3:
+                newPoints = 300;
+                break;
+            case 4:
+                newPoints = 1200;
+                break;
+        }
+        return newPoints;
+    }
+
     function removeFullLines() {
 
         const newScene = copyScene(scene);
         let touched = false;
+        let rowsRemoved = 0;
 
         const removeRow = (rY) => {
             for (let y = rY; y > 0; y--) {
                 for (let x = 0; x < COLUMN_COUNT; x++) {
-                    newScene[y][x] = newScene[y-1][x];
+                    newScene[y][x] = newScene[y - 1][x];
                 }
             }
             // insert blank row at top
@@ -115,39 +135,43 @@ export function useBoard() {
             }
 
             touched = true;
-            setScore( oldVal => oldVal + 1000 );
         };
 
+        //check for empty rows
         for (let y = 0; y < ROW_COUNT; y++) {
             let rowHasEmptySpace = false;
             for (let x = 0; x < COLUMN_COUNT; x++) {
-                if (newScene[y][x]===0) {
+                if (newScene[y][x] === 0) {
                     rowHasEmptySpace = true;
                     break;
                 }
             }
             if (!rowHasEmptySpace) {
                 removeRow(y);
+                rowsRemoved++;
             }
         }
 
         if (touched) {
             setScene(newScene);
         }
+
+        setScore(oldVal => oldVal + scoringSystem(rowsRemoved));
     }
 
+    // Need to add in space for immediate drop and a key for hold
     function onKeyDown(event) {
         switch (event.key) {
             case 'ArrowRight':
-                movePosition(1,0);
+                movePosition(1, 0);
                 event.preventDefault();
                 break;
             case 'ArrowLeft':
-                movePosition(-1,0);
+                movePosition(-1, 0);
                 event.preventDefault();
                 break;
             case 'ArrowDown':
-                movePosition(0,1);
+                movePosition(0, 1);
                 event.preventDefault();
                 break;
             case 'ArrowUp':
@@ -160,9 +184,9 @@ export function useBoard() {
     }
 
     function movePosition(x, y) {
-        const res = {x: x + position.x, y: y + position.y};
+        const res = { x: x + position.x, y: y + position.y };
 
-        if (!validPosition(res, shape)) { return false;}
+        if (!validPosition(res, shape)) { return false; }
 
         setPosition(res);
 
@@ -170,7 +194,7 @@ export function useBoard() {
     }
 
     function validPosition(position, shape) {
-        return shape.shape.every( point => {
+        return shape.shape.every(point => {
             const tX = point.x + position.x;
             const tY = point.y + position.y;
 
@@ -178,7 +202,7 @@ export function useBoard() {
 
             if (tY < 0 || tY >= ROW_COUNT) { return false; }
 
-            if (scene[tY][tX]!==0) { return false; }
+            if (scene[tY][tX] !== 0) { return false; }
 
             return true;
         });

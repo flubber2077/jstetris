@@ -21,17 +21,15 @@
   cursor: pointer;
 }*/
 
-h1 {
-  font-family: 'Press Start 2P', cursive;
-}
-
-p {
-  font-family: 'Press Start 2P', cursive;
-}
-
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 0px;
+  font-family: 'Press Start 2P', cursive;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+-moz-osx-font-smoothing: none;
+}
+
+h1 {
+  font-size: 56px;
 }
 
 .tetris-row {
@@ -79,7 +77,6 @@ body {
 
 .tetris-score-label {
   font-size: medium;
-  font-family: 'Press Start 2P', cursive;
 }
 
 .tetris-parent {

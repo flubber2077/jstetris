@@ -29,7 +29,7 @@ ReactDOM.render(
   <div>
     <header>
       <h1>tetr.js</h1>
-      <p>by K. Montgomery and D. Jordan</p>
+      <p>by <a href="https://github.com/montgomerykate">K. Montgomery</a> and <a href="https://github.com/flubber2077">D. Jordan</a></p>
     </header>
     <Game />
   </div>,

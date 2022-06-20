@@ -1,5 +1,10 @@
 import React, {useEffect, useRef} from 'react';
 
+
+// Dictates the interval of refresh of pieces falling
+// Delay can be shortened as levels increase
+// Using useEffect should help with overall timing and stability
+
 export function useInterval(callback, delay) {
 
     const callbackRef = useRef();

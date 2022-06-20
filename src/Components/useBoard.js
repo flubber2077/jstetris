@@ -37,10 +37,9 @@ function createEmptyScene() {
 }
 
 export function useBoard() {
-
     const [scene, setScene] = useState(() => createEmptyScene());
     const [shape, setShape] = useState(() => randomShape());
-    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [position, setPosition] = useState({ x: 4, y: 0 });
     const [display, setDisplay] = useState(() => mergeIntoStage(scene, shape, position));
     const [score, setScore] = useState(0);
 
@@ -62,7 +61,7 @@ export function useBoard() {
     function placeShape() {
         setScene(mergeIntoStage(scene, shape, position));
         setShape(randomShape());
-        setPosition({ x: 0, y: 0 });
+        setPosition({ x: 4, y: 0 });
     }
 
     function rotateShape() {

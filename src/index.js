@@ -2,7 +2,7 @@
 // import ReactDOM from 'react-dom/client';
 // import './index.css';
 import App from './Components/App';
- import reportWebVitals from './reportWebVitals';
+import reportWebVitals from './reportWebVitals';
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
@@ -18,15 +18,21 @@ import Board from "./Components/board.js";
 
 
 function Game() {
-  return(
+  return (
     <div className="tetris-parent" >
-      <Board/>
+      <Board />
     </div>
   );
 }
 
 ReactDOM.render(
-  <Game />,
+  <div>
+    <header>
+      <h1>tetr.js</h1>
+      <p>by K. Montgomery and D. Jordan</p>
+    </header>
+    <Game />
+  </div>,
   document.getElementById('root')
 );
 

@@ -136,6 +136,24 @@ export function useBoard() {
             touched = true;
         };
 
+        //check for blocks stuck at top/game over
+        function reset() {
+            setScene(createEmptyScene());
+            setScore(0);
+    
+        }
+        let topRowEmpty = true;
+        for (let x = 0; x < COLUMN_COUNT; x++) {
+            if (newScene[0][x] === 1) {
+                topRowEmpty = false;
+                break;
+            }
+        }
+
+        if (!topRowEmpty) {
+            reset();
+        }
+
         //check for empty rows
         for (let y = 0; y < ROW_COUNT; y++) {
             let rowHasEmptySpace = false;

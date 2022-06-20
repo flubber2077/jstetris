@@ -59,7 +59,7 @@ h1 {
   --blue: #00e;
   --darkblue: #00b;
   --lightblue: #11f;
-  --borderwidth: 6px;
+  --borderwidth: 7px;
   background-color: var(--blue);
   border-bottom: var(--borderwidth) solid var(--darkblue);
   border-right: var(--borderwidth) solid var(--darkblue);

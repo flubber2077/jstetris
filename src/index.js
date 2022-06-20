@@ -19,7 +19,7 @@ import Board from "./Components/board.js";
 
 function Game() {
   return(
-    <div className="t-parent" >
+    <div className="tetris-parent" >
       <Board/>
     </div>
   );

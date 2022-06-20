@@ -13,19 +13,21 @@ const Board = () => {
     }
 
     return (
-        <div ref={eBoard} className={'t-board'} tabIndex={0} onKeyDown={ onKeyDown }>
+        <div ref={eBoard} className={'tetris-board'} tabIndex={0} onKeyDown={ onKeyDown }>
             <div>
-                <span className="t-score-label">Score:</span>
-                <span className="t-score-label">{score.toLocaleString()}</span>
+                <span className="tetris-score-label">Score:</span>
+                <span className="tetris-score-label">{score.toLocaleString()}</span>
             </div>
             {display.map( (row, index) => <Row row={row} key={index}/>)}
         </div>
     );
 };
 
+
+//generates each row
 const Row = memo( props => {
     return (
-        <span className='t-row'>
+        <span className='tetris-row'>
             {props.row.map( (cell, index) => <Cell cell={cell} key={index}/>)}
         </span>
     );
@@ -38,7 +40,7 @@ const Cell = memo( props => {
 
     const value = props.cell ? props.cell : 0;
     return (
-        <span className={`t-cell t-cell-${value}`}></span>
+        <span className={`tetris-cell tetris-cell-${value}`}></span>
     );
 });
 

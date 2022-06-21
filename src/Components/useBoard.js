@@ -151,6 +151,8 @@ export function useBoard() {
         }
 
         if (!topRowEmpty) {
+            //Send score and info to back end here
+            alert("Game Over")
             reset();
         }
 

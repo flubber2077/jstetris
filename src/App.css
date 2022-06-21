@@ -32,6 +32,15 @@ h1 {
   font-size: 56px;
 }
 
+.start-button {
+  text-align: center;
+  padding: 10vw;
+  border: none;
+  color: white;
+  text-decoration: none;
+  font-size: 32px;
+}
+
 .tetris-row {
   display: flex;
 }

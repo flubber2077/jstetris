@@ -12,7 +12,7 @@ function App() {
             </header>
 
             <Switch>
-                <Route path="/h">
+                <Route path="/game">
                     <div className="tetris-parent" >
                         <Board />
                     </div>
@@ -20,7 +20,7 @@ function App() {
 
                 <Route path='/'>
                     <div className='start-button'>
-                        <NavLink to ='/h'>
+                        <NavLink to ='/game'>
                             start
                         </NavLink>
                     </div>

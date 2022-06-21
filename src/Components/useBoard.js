@@ -18,7 +18,7 @@ function mergeIntoStage(stage, shape, position) {
 
         if (x < 0 || y < 0 || x >= COLUMN_COUNT || y >= ROW_COUNT) { return; }
 
-        res = updateStage(res, x, y, 1);
+        res = updateStage(res, x, y, shape.type);
     });
 
     return res;
@@ -144,7 +144,7 @@ export function useBoard() {
         }
         let topRowEmpty = true;
         for (let x = 0; x < COLUMN_COUNT; x++) {
-            if (newScene[0][x] === 1) {
+            if (newScene[0][x] !== 0) {
                 topRowEmpty = false;
                 break;
             }

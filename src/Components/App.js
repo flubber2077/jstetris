@@ -25,10 +25,12 @@ function App() {
                         <NavLink to ='/game'>
                             START
                         </NavLink>
-                        <h4>controls</h4>
-                        <p>left/right: move</p>
-                        <p>up: rotate</p>
-                        <p>down: advance</p>
+                        <h4>Controls</h4>
+                        <p>Left/Right: Move</p>
+                        <p>Up: Rotate</p>
+                        <p>Down: Advance</p>
+                        <p>Complete rows in order to clear them, clear four rows at once for the most points</p>
+                        <p>A block landing on the top row is Game Over</p>
 
                     </div>
                 </Route>

@@ -8,7 +8,7 @@ function App() {
         <div>
             <header>
                 <h1>tetr.js</h1>
-                <p>by <a href="https://github.com/montgomerykate">K. Montgomery</a> and <a href="https://github.com/flubber2077">D. Jordan</a></p>
+                <h2>by <a href="https://github.com/montgomerykate">K. Montgomery</a> and <a href="https://github.com/flubber2077">D. Jordan</a></h2>
             </header>
 
             <Switch>

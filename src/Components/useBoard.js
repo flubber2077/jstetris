@@ -86,10 +86,12 @@ export function useBoard() {
 
             return { x: rX, y: rY };
         });
+
         const newShape = {
             shape: newPoints,
             width: shape.width,
-            height: shape.height
+            height: shape.height,
+            type: shape.type
         };
 
         if (validPosition(position, newShape)) {
@@ -140,7 +142,7 @@ export function useBoard() {
         function reset() {
             setScene(createEmptyScene());
             setScore(0);
-    
+
         }
         let topRowEmpty = true;
         for (let x = 0; x < COLUMN_COUNT; x++) {

@@ -11,7 +11,7 @@ const SHAPES = [
         ],
         width: 2,
         height: 2,
-        type: 1,
+        type: 2,
         rotate: false
     },
     //long
@@ -24,7 +24,7 @@ const SHAPES = [
         ],
         width: 1,
         height: 4,
-        type: 2
+        type: 1
     },
     // L
     {

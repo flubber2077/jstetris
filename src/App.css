@@ -32,6 +32,10 @@ h1 {
   font-size: 56px;
 }
 
+h2 {
+  font-size: 32px;
+}
+
 .start-button {
   text-align: center;
   padding: 10vw;

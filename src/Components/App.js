@@ -23,8 +23,13 @@ function App() {
                 <Route path='/'>
                     <div className='start-button'>
                         <NavLink to ='/game'>
-                            start
+                            START
                         </NavLink>
+                        <h4>controls</h4>
+                        <p>left/right: move</p>
+                        <p>up: rotate</p>
+                        <p>down: advance</p>
+
                     </div>
                 </Route>
             </Switch>

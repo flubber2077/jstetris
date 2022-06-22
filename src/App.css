@@ -32,6 +32,14 @@ h1 {
   font-size: 56px;
 }
 
+h2 {
+  font-size: 32px;
+}
+
+p {
+  font-size: 16px;
+}
+
 .navbar {
   background-color: lightgrey;
   display: flex;
@@ -53,15 +61,10 @@ h1 {
    padding: 2vw;
  }
 
-h2 {
-  font-size: 32px;
-}
-
 .start-button {
   text-align: center;
   padding: 10vw;
   border: none;
-  color: white;
   text-decoration: none;
   font-size: 32px;
 }

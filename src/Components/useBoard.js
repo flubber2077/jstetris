@@ -18,7 +18,7 @@ function mergeIntoStage(stage, shape, position) {
 
         if (x < 0 || y < 0 || x >= COLUMN_COUNT || y >= ROW_COUNT) { return; }
 
-        res = updateStage(res, x, y, 1);
+        res = updateStage(res, x, y, shape.type);
     });
 
     return res;
@@ -86,10 +86,12 @@ export function useBoard() {
 
             return { x: rX, y: rY };
         });
+
         const newShape = {
             shape: newPoints,
             width: shape.width,
-            height: shape.height
+            height: shape.height,
+            type: shape.type
         };
 
         if (validPosition(position, newShape)) {
@@ -140,11 +142,11 @@ export function useBoard() {
         function reset() {
             setScene(createEmptyScene());
             setScore(0);
-    
+
         }
         let topRowEmpty = true;
         for (let x = 0; x < COLUMN_COUNT; x++) {
-            if (newScene[0][x] === 1) {
+            if (newScene[0][x] !== 0) {
                 topRowEmpty = false;
                 break;
             }

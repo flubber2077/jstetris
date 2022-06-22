@@ -1,4 +1,5 @@
 import Board from "./board.js";
+import NavBar from "./NavBar.js";
 import '../App.css';
 import ReactDom from "react-dom"
 import { Route, Switch, NavLink } from 'react-router-dom';
@@ -9,6 +10,7 @@ function App() {
             <header>
                 <h1>tetr.js</h1>
                 <h2>by <a href="https://github.com/montgomerykate">K. Montgomery</a> and <a href="https://github.com/flubber2077">D. Jordan</a></h2>
+                <NavBar />
             </header>
 
             <Switch>
